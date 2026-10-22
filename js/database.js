@@ -16,16 +16,15 @@ if (!localStorage.getItem('restauranteDB')) {
 
 
 function obtenerMenu() {
-    /**
-     * Lee la base de datos de localStorage y devuelve el menú.
-     * 
-     * - Debe usar localStorage.getItem('restauranteDB').
-     * - Debe convertir el string a objeto usando JSON.parse().
-     * - Devuelve exclusivamente el arreglo 'menu' contenido en el objeto.
-     */
-    throw new Error("Equipo: implementen obtenerMenu");
-}
+  const datos = localStorage.getItem("restauranteDB");
 
+  if (!datos) {
+    return [];
+  }
+
+  const db = JSON.parse(datos);
+  return db.menu || [];
+}
 
 function guardarComanda(totalOrden) {
     /**
