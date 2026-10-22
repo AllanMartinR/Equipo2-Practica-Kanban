@@ -23,18 +23,19 @@ function cargarMenu() {
     item.appendChild(nombre);
     item.appendChild(precio);
     contenedor.appendChild(item);
+    
+    item.addEventListener("click", function () {
+      sumarAlTotal(Number(platillo.precio));
+    });
+
+    contenedor.appendChild(item);
   });
 }
 
 
-function sumarTotal(precio) {
-    /**
-     * Actualiza el total de la orden en memoria y en pantalla.
-     * 
-     * - Suma el parámetro 'precio' a la variable global 'totalActual'.
-     * - Actualiza el texto del elemento HTML con id 'total' para reflejar el nuevo valor.
-     */
-    throw new Error("Equipo: implementen sumarTotal");
+function sumarAlTotal(precio) {
+  totalActual += precio;
+  document.getElementById("total").textContent = totalActual.toFixed(2);
 }
 
 
