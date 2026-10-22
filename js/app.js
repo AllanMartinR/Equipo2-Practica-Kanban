@@ -40,19 +40,23 @@ function sumarAlTotal(precio) {
 
 
 // Evento del botón enviar
-document.getElementById('btn-ordenar').addEventListener('click', function() {
-    /**
-     * Finaliza la orden y reinicia el sistema.
-     * 
-     * - Valida que 'totalActual' sea mayor a 0 (si es 0, no hace nada o muestra alerta).
-     * - Llama a guardarComanda(totalActual).
-     * - Lanza un alert("Orden enviada").
-     * - Reinicia 'totalActual' a 0.
-     * - Actualiza el texto del id 'total' en el HTML a "0.00".
-     */
-    throw new Error("Equipo: implementen la lógica del botón enviar");
-});
+document.getElementById("btn-ordenar").addEventListener("click", function () {
+  // 1. Validar que el total sea mayor a 0
+  if (totalActual <= 0) {
+    return; // no pasa nada
+  }
 
+  // 2. Guardar la comanda
+  guardarComanda(totalActual);
+
+  // 3. Avisar al usuario
+  alert("Orden enviada");
+
+  // 4. Reiniciar el total y actualizar la pantalla
+  totalActual = 0;
+  document.getElementById("total").textContent = totalActual.toFixed(2);
+});
 
 // Arranca la app inicial
 cargarMenu();
+
