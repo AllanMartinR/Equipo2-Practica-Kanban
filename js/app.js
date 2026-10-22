@@ -2,18 +2,28 @@ let totalActual = 0;
 
 
 function cargarMenu() {
-    /**
-     * Renderiza el menú en el HTML.
-     * 
-     * - Llama a obtenerMenu() y guarda el resultado.
-     * - Limpia el contenido de document.getElementById('menu-container').
-     * - Itera sobre el arreglo de platillos.
-     * - Por cada platillo, crea un <div> con la clase 'platillo'.
-     * - El <div> debe mostrar el nombre y el precio.
-     * - Debe asignar un evento onclick al <div> que llame a sumarTotal(precio).
-     * - Agrega el <div> al contenedor.
-     */
-    throw new Error("Equipo: implementen cargarMenu");
+  const contenedor = document.getElementById("menu-container");
+  const menu = obtenerMenu();
+
+  // Limpiamos por si se llama más de una vez
+  contenedor.innerHTML = "";
+
+  menu.forEach(function (platillo) {
+    const item = document.createElement("div");
+    item.classList.add("platillo");
+    item.dataset.id = platillo.id;
+    item.dataset.precio = platillo.precio;
+
+    const nombre = document.createElement("h3");
+    nombre.textContent = platillo.nombre;
+
+    const precio = document.createElement("p");
+    precio.textContent = "$" + Number(platillo.precio).toFixed(2);
+
+    item.appendChild(nombre);
+    item.appendChild(precio);
+    contenedor.appendChild(item);
+  });
 }
 
 
